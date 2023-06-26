@@ -1,0 +1,200 @@
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Perfect Pizza</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    </head>
+    <body>
+        <h1>Perfect Pizza</h1>
+        <div x-data="{qauntity1 : 0, successMsg: 'Done!', errorMsg: 'Error!', qauntity2:0 , qauntity3:0, price1:0, price2:0, price3:0,amount:10, total:0 , message:'Sorry-that money is not enough', text:'', checknr:0}">
+        <div>
+            <div class="catlogue">
+            <h3 class="cart">Shopping Cart</h3>
+            
+            <table border="1" class="table">
+                <thead>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr x-show="qauntity1 > 0" : class="qauntity1">
+                    <td>
+                      small pizza  
+                    </td>
+                    <td>
+                        <div class="price1" x-text="price1"></div>
+                    </td>
+                    <td>
+                        <div class="qauntity1" x-text="qauntity1"> </div>
+                    </td>
+                    <td>
+                        <button @click="qauntity1++, price1=49.00*qauntity1,total=total+11.00">+</button>
+                        <button @click="qauntity1--, price1=49.00*qauntity1, total=total-11.00">-</button>  
+                    </td>
+                </tr>
+                <tr x-show="qauntity2> 0" : class="qauntity2">
+                    <td>
+                      medium pizza  
+                    </td>
+                    <td>
+                        <div class="price2" x-text="price2"></div>
+                    </td>
+                    <td>
+                     <div class="qauntity2" x-text="qauntity2"></div>
+                    </td>
+                    <td>
+                        <button @click="qauntity2++, price2=89.00*qauntity2, total=total+14.00">+</button>
+                        <button @click="qauntity2--, price2=89.00*qauntity2, total=total-14.00">-</button>
+                    </td>
+                </tr>
+                <tr x-show="qauntity3 > 0" : class="qauntity3">
+                    <td>
+                      big pizza 
+                    </td>
+                    <td>
+                        <div class="price3" x-text="price3"></div>
+                    </td>
+                    <td>
+                        <div class="qauntity3" x-text="qauntity3"> </div>
+                    </td>
+                    <td>
+                        <button @click="qauntity3++, price3=price3*qauntity3, total=total+120.00">+</button>
+                        <button @click="qauntity3--, price3=price3*qauntity3, total=total-120.00">-</button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            <table>
+                <tr>
+             <th>Total price </th>
+             <th> <span class="total" x-text="total"></span></th>
+                </tr>
+            </table>
+                <div>
+                <div class="checkout">
+                    <button x-show="total>0" :class="checkout" @click="checknr=1">checkout</button>
+                </div>
+                <div x-show="checknr>0">
+                <div class="message" x-text="successMsg" x-show="amount>=total"></div>
+                <div class="message" x-text="errorMsg" x-show="amount < total && amount > 0"></div>
+                Paymemt amount:
+                    <input x-model="amount" type="text" class="Paymemt amount">
+                </div>
+                </div>
+        
+             </div>
+             <div>
+                
+             </div>
+             
+             <div class="pizzas">
+                <div class="small_pizza">    
+                <h2>Small Pizza</h2>
+                <img src ="https://th.bing.com/th/id/R.28e85501a3d0cae11e7a4375aff3f279?rik=MzL3ZJnzS%2b7vxw&pid=ImgRaw&r=0" width="90">
+                <h4> R49 </h4>
+                <div>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                <div>
+                    <button @click="qauntity1++, price1=49.00*qauntity1, total=total+49.00">Buy</button>
+                </div>
+                </div>
+                </div>
+             
+                <div class="medium_pizza">
+                <h2>Medium Pizza</h2>
+                <img src="https://th.bing.com/th/id/R.28e85501a3d0cae11e7a4375aff3f279?rik=MzL3ZJnzS%2b7vxw&pid=ImgRaw&r=0" width ="110">
+                <h4>R89</h4>
+                <div>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                <div>
+                    <button @click="qauntity2++, price2=89.00*qauntity2, total=total+89.00">Buy</button>
+                </div>
+                </div>
+                </div>
+            
+                <div class="large_pizza">
+                <h2>Large Pizza</h2>
+                <img src="https://th.bing.com/th/id/R.28e85501a3d0cae11e7a4375aff3f279?rik=MzL3ZJnzS%2b7vxw&pid=ImgRaw&r=0" width="130">
+                <h4>R120</h4>
+                <div>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                <div>
+                   
+                 <button @click="qauntity3++, price3=120.00*qauntity3, total=toatl+120">Buy</button>
+                </div>
+                </div>
+                </div>
+                </div>
+            
+                <div class="contact_us">
+                <h2>Contact Details</h2>
+                <div>
+                Contact us at: 0772279099 infor@perfectpizza.co.za
+                </div>
+                </div>
+        
+
+
+</div>
+
+
+
+
+
+    
+        <table class="ui small selectable celled table" x-show="showCart">
+            <thead>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                
+                <template x-for="pizza in orders">
+                    <tr x-show="pizza.qty > 0" : class="pizza.size">
+                        <td>
+                            <h4 class="ui image header">
+                                <img :src="pizza.image" class="mini rounded image">
+                                <div class="content">
+                                    <b x-text="' ${_,capitalize(pizza.size)}'"></b>
+                                    <div x-text="pizza.description.substring(0,30)" class="sub header"></div>
+                                </div>
+                            </h4>
+                            <!-- <strong x-text="pizza.totalDescription()">Small pizzas total:</strong>-->
+                        </td>
+                        <td><span x-text="pizza.getSubTotal()"></span></td>
+                        <td>x<span x-text="pizza.qty"></span></td>
+                        <td>
+                            <div class="ui buttons">
+                                <button class="ui negative icon button" @click="pizza.subtract()">
+                                    <i class="minus icon"></i>
+                                </button>
+                                <div class="or"></div>
+                                <button class="ui postive icon button" @click="pizza.add()">
+                                    <i class="plus icon"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+    
+                </template>
+            </tbody>
+            
+         </table>
+    
+    </body>
+    </html>
+    
+  
+
+     
+</body>
+</html>
